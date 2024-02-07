@@ -31,34 +31,23 @@
                         </ul>
                         @endif
                       </div>
-                        <form id="addBookForm" action="" method="post">
+                        <form id="addBookForm" action="{{route('partner.store')}}" method="post" enctype="multipart/form-data">
                         
                             @csrf
                         
                             <div class="mb-3">
-                                <label for="projectname" class="form-label">Project Name</label>
-                                <input type="text" class="form-control" id="projectname" name="projectname" required>
+                                <label for="name" class="form-label">Partner Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
                             </div>
                             <div class="mb-3">
                               <label for="description" class="form-label">Description</label>
                               <input type="text" class="form-control" id="description" name="description" required>
                           </div>
-        
-                            <div class="mb-3">
-                                <label for="requirements" class="form-label">Requirements</label>
-                                <input type="text" class="form-control" id="requirements" name="requirements" required>
-                            </div>
-        
-                            <div class="mb-3">
-                                <label for="partner" class="form-label">Partner</label>
-                                <input type="text" class="form-control" id="description" name="description" required>
-                            </div>
-
                             <div class="mb-3">
                               <label for="image" class="form-label">Image</label>
                               <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
                             </div>
-                            <button type="submit" class="btn btn-primary" name="submit">ADD</button>
+                            <button type="submit" class="btn btn-primary">ADD</button>
                         </form>
                     </div>
                   
@@ -77,12 +66,10 @@
             <thead class="bg-light">
           <tr>
             <th>ID</th>
-            <th>Project Name </th>
+            <th>Partner Name </th>
             <th>Description</th>
-            <th>Requirements</th>
-            <th>Partner Name</th>
-            <th>Number Of Collaboraters</th>
-            <th>Project Image</th>
+            <th>Image</th>
+            <th>Number of Project</th>
             <th>Action</th>
             				
           </tr>
@@ -90,16 +77,13 @@
         <tbody id="category">
 
 
-          {{-- @foreach --}}
+          @foreach($partners as $partner)
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
+                <td>{{$partner->id}}</td>
+                <td>{{$partner->name}}</td>
+                <td>{{$partner->description}}</td>
+                <td><img src="{{ asset('storage/' . $partner->image) }}" alt="Partner Image" style="max-width: 70px;"></td>
+                <td>number of projects</td>
        
                 <td class="d-flex gap-2">
                 <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#editModal" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16"> <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/> </svg></button>
@@ -113,7 +97,7 @@
                 </form>
                 </td>
             </tr>
-            {{-- @endforeach --}}
+            @endforeach
 
 
                {{-- Edite Modal  --}}
