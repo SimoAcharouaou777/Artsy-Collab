@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('profile')->nullable();
             $table->json('skills')->nullable();
+            $table->enum('status',['active', 'notactive', 'banned'])->default('active');
             $table->rememberToken();
             $table->timestamps();
         });
