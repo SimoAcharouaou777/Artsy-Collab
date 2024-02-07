@@ -16,10 +16,26 @@ class PartnerController extends Controller
     }
     public function store(PartnersRequest $request)
     {
-      
         $data= $request->all();
         $data['image'] = $request->file('image')->store('images','public');
         $newpartner = Partner::create($data);
         return redirect(route('showPartners'));
     }
+
+    public function delete($id)
+    {
+        Partner::find($id)->delete();
+        return redirect(route('showPartners'));
+    }
+
+    public function update(PartnersRequest $request, $id)
+    {
+        $partner = Partner::find($id);
+        $data=$request->all();
+     
+        $data['image'] = $request->file('image')->store('image','public');
+        $partner->update($data);
+        return redirect(route('showPartners'));
+    }
+
 }
