@@ -26,3 +26,5 @@ Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard')
 Route::get('/showUsers',[DashboardController::class,'showUsers'])->name('showUsers');
 Route::get('/showPartners',[PartnerController::class,'index'])->name('showPartners');
 Route::post('/partnerStore',[PartnerController::class,'store'])->name('partner.store');
+Route::delete('/deletepartner/{id}',[PartnerController::class,'delete'])->name('delete.partner');
+Route::put('/updatepartner/{id}',[PartnerController::class,'update'])->name('updatepartner');
