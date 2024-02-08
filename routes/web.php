@@ -6,6 +6,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ArchivedProjectsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\BannedController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +38,6 @@ Route::delete('/projectdelete/{id}', [ProjectController::class, 'softDelete'])->
 Route::post('/projectrestore/{id}', [ArchivedProjectsController::class, 'restore'])->name('project.restore');
 Route::put('/updateprojectstatus/{id}', [ProjectController::class, 'updateSatus'])->name('project.updateStatus');
 Route::put('/BannUser/{user}',[UsersController::class,'banUser'])->name('ban.user');
+Route::get('/banned', [BannedController::class,'index'])->name('banned.user');
 
 
