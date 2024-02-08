@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('requirements');
             $table->string('image');
-            $table->string('status');
+            $table->enum('status', ['published', 'unpublished', 'deleted'])->default('unpublished');
             $table->timestamps();
         });
     }

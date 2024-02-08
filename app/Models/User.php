@@ -25,6 +25,7 @@ class User extends Authenticatable
         'password',
         'profile',
         'skills',
+        'status',
     ];
 
     /**
@@ -56,6 +57,7 @@ class User extends Authenticatable
     {
         return $this->roles->contains('name', $role);
     }
+
     public function projects()
     {
         return $this->belongsToMany(Project::class);
