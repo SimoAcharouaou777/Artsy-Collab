@@ -11,6 +11,8 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>{{ config('app.name', 'Laravel') }}</title>
+   <!--boostrap icons -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -200,7 +202,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
