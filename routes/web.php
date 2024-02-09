@@ -7,6 +7,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ArchivedProjectsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\BannedController;
+use App\Models\Partner;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,9 @@ use App\Http\Controllers\BannedController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    $recentPartners = Partner::latest()->take(6)->get();
+        return view('home', compact('recentPartners'));
+    
 });
 
 Auth::routes();
