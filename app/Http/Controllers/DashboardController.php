@@ -15,6 +15,6 @@ class DashboardController extends Controller
         $projects = Project::with('partner')->get();
         return view('admin.projects',compact('partners','projects'));
     }
- 
 
 }
+
