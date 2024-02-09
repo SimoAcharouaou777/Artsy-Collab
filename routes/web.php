@@ -6,8 +6,10 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ArchivedProjectsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\BannedController;
 use App\Models\Partner;
+use App\Models\Project;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +24,8 @@ use App\Models\Partner;
 
 Route::get('/', function () {
     $recentPartners = Partner::latest()->take(6)->get();
-        return view('home', compact('recentPartners'));
+    $projects = Project::with('partner')->where('status', 'published')->get();
+        return view('home', compact('recentPartners','projects'));
     
 });
 
@@ -42,5 +45,7 @@ Route::post('/projectrestore/{id}', [ArchivedProjectsController::class, 'restore
 Route::put('/updateprojectstatus/{id}', [ProjectController::class, 'updateSatus'])->name('project.updateStatus');
 Route::put('/BannUser/{user}',[UsersController::class,'banUser'])->name('ban.user');
 Route::get('/banned', [BannedController::class,'index'])->name('banned.user');
+Route::get('/details/{id}', [DetailsController::class, 'index'])->name('project.details');
+
 
 
