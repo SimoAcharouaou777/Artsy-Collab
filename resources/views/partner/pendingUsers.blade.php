@@ -108,20 +108,20 @@
 
        
                 <td class="d-flex gap-2">
-                <form action="" method="post">
+                <form action="{{route('acceptUser.Request', $collab->id)}}" method="post">
                   @csrf
                   @method('PUT')
-                  <button type="submit" class="btn btn-light" name="status" value="published">
+                  <button type="submit" class="btn btn-light" name="status" value="accepted">
                     <svg class="bi bi-check-circle-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" viewBox="0 0 16 16">
                       <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zM7 11a.5.5 0 0 1-1 0V6a.5.5 0 0 1 1 0v5a.5.5 0 0 1 0 1zM8 5.5a.5.5 0 0 1 1 0V10a.5.5 0 0 1-1 0V5.5zM4 8a1 1 0 0 1 1-1h5a1 1 0 0 1 0 2H5a1 1 0 0 1-1-1z"/>
                     </svg>
                   </button>
               </form>
 
-              <form action="" method="post">
+              <form action="{{route('refuseUser.Request', $collab->id)}}" method="post">
                 @csrf
                 @method('PUT')
-                <button type="submit" class="btn btn-light" name="status" value="unpublished">
+                <button type="submit" class="btn btn-light" name="status" value="refused">
                   <svg class="bi bi-x-circle-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" viewBox="0 0 16 16">
                     <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zM5.354 4.646a.5.5 0 0 1 .708 0L8 6.293l2.938-2.939a.5.5 0 0 1 .707.708L8.707 7l2.938 2.938a.5.5 0 0 1-.707.708L8 7.707 5.354 10.354a.5.5 0 0 1-.708-.708L7.293 7 4.646 4.354a.5.5 0 0 1 0-.708z"/>
                   </svg>  
