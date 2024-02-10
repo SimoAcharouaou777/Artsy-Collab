@@ -34,12 +34,16 @@
                     <h3>Project information</h3>
                     <ul>
                         <li><strong>Title</strong>: {{ $project->title }}</li>
-                        <li><strong>Partner</strong>: {{ $project->partner->name ?? 'N/A' }}</li>
+                        <li><strong>Partner</strong>: {{ $project->partner->name}}</li>
                         <li><strong>Partner Logo</strong>:<img src="{{ asset('storage/' . $project->partner->image) }}" alt="{{ $project->partner->name }} Logo" style="max-width: 100%;"></li>
                         <li><strong>Project Description</strong>: {{$project->description}}</li>
+                        <li><strong>Project Requirements</strong>: {{$project->requirements}}</li>
                     </ul>
                 </div>
-                <a href="" class="btn btn-primary d-flex flex-column align-items-center">Send Request</a>
+                <form action="{{ route('send.request',  $project->id) }}" method="post">
+                  @csrf
+                  <button type="submit" class="btn btn-primary d-flex flex-column align-items-center">Send Request</button>
+              </form>
             </div>
 
         </div>
