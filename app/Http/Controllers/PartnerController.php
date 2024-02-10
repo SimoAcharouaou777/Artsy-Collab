@@ -38,5 +38,6 @@ class PartnerController extends Controller
         return redirect(route('showPartners'));
     }
 
+  
    
 }
