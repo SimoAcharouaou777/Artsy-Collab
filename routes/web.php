@@ -8,6 +8,7 @@ use App\Http\Controllers\ArchivedProjectsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\BannedController;
+use App\Http\Controllers\CollaborationRequest;
 use App\Models\Partner;
 use App\Models\Project;
 
@@ -46,6 +47,7 @@ Route::put('/updateprojectstatus/{id}', [ProjectController::class, 'updateSatus'
 Route::put('/BannUser/{user}',[UsersController::class,'banUser'])->name('ban.user');
 Route::get('/banned', [BannedController::class,'index'])->name('banned.user');
 Route::get('/details/{id}', [DetailsController::class, 'index'])->name('project.details');
-
+Route::get('/partnerdashboard',[CollaborationRequest::class,'showdashboard'])->name('partner.dashboard');
+Route::post('/sendRequest/{id}',[CollaborationRequest::class,'sendRequest'])->name('send.request');
 
 
