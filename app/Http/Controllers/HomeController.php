@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Partner;
+use App\Models\Project;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $recentPartners = Partner::latest()->take(6)->get();
-        return view('home', compact('recentPartners'));
+        $projects = Project::with('partner')->where('status', 'published')->get();
+        return view('home', compact('recentPartners','projects'));
     }
 }
