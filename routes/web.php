@@ -49,5 +49,9 @@ Route::get('/banned', [BannedController::class,'index'])->name('banned.user');
 Route::get('/details/{id}', [DetailsController::class, 'index'])->name('project.details');
 Route::get('/partnerdashboard',[CollaborationRequest::class,'showdashboard'])->name('partner.dashboard');
 Route::post('/sendRequest/{id}',[CollaborationRequest::class,'sendRequest'])->name('send.request');
+Route::put('/acceptUserRequest/{id}',[CollaborationRequest::class,'acceptRequest'])->name('acceptUser.Request');
+Route::put('/refuseUserRequest/{id}',[CollaborationRequest::class,'refuseRequest'])->name('refuseUser.Request');
+Route::get('/ShowAceeptedUsers',[CollaborationRequest::class,'showAcceptedUsers'])->name('accepted.users');
+Route::get('/showRefusedUsers',[CollaborationRequest::class,'showRefusedUsers'])->name('refused.Users');
 
 
