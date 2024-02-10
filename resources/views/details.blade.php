@@ -20,7 +20,17 @@
   <!-- ======= Portfolio Details Section ======= -->
   <section id="portfolio-details" class="portfolio-details">
     <div class="container">
+      @if(session('success'))
+      <div class="alert alert-success">
+        {{ session('success') }}
+     </div>
+   @endif
 
+   @if(session('error'))
+     <div class="alert alert-danger">
+       {{ session('error') }}
+     </div>
+   @endif
         <div class="row gy-4">
 
             <div class="col-lg-8">
@@ -45,7 +55,6 @@
                   <button type="submit" class="btn btn-primary d-flex flex-column align-items-center">Send Request</button>
               </form>
             </div>
-
         </div>
 
     </div>
