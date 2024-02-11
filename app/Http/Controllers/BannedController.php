@@ -11,3 +11,4 @@ class BannedController extends Controller
         return view('ban.banned');
     }
 }
+ 
