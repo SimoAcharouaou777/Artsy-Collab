@@ -49,7 +49,7 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href={{asset("index.html")}}>Arsha</a></h1>
+      <h1 class="logo me-auto"><a href={{asset("index.html")}}>Artsy Collabs</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -85,6 +85,13 @@
           <li><a class="getstarted scrollto" href="{{ route('register') }}">{{ __('Register') }}</a></li>
           @endif
           @else
+          @auth
+          @if (auth()->user()->hasRole('user'))
+            <li>
+              <a class="nav-link scrollto" href="{{ route('profile.index')}}" >Profile</a>
+            </li>
+          @endif
+          @endauth
           <li>
             <a class="getstarted scrollto" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
