@@ -53,5 +53,7 @@ Route::put('/acceptUserRequest/{id}',[CollaborationRequest::class,'acceptRequest
 Route::put('/refuseUserRequest/{id}',[CollaborationRequest::class,'refuseRequest'])->name('refuseUser.Request');
 Route::get('/ShowAceeptedUsers',[CollaborationRequest::class,'showAcceptedUsers'])->name('accepted.users');
 Route::get('/showRefusedUsers',[CollaborationRequest::class,'showRefusedUsers'])->name('refused.Users');
+Route::delete('/deleteUser/{id}',[UsersController::class,'deleteUser'])->name('delete.User');
+Route::put('/updateUserRole/{id}',[UsersController::class,'UpdateUserRole'])->name('update.user.role');
 
 

@@ -204,6 +204,7 @@
   <!-- Template Main JS File -->
   <script src={{asset("assets/js/main.js")}}></script>
   <script src={{asset("https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js")}}></script>
+  
 </body>
 
 </html>
