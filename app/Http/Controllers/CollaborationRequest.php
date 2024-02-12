@@ -22,7 +22,7 @@ class CollaborationRequest extends Controller
     {
         $user = Auth::user();
         $pendingUsers = $user->projects()->wherePivot('status', 'pending')->get();
-         return view('partner.pendingUsers', compact('pendingUsers'));
+        return view('partner.pendingUsers', compact('pendingUsers'));
     }
     public function acceptRequest($projectId)
     {
