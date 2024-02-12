@@ -49,5 +49,5 @@ class CollaborationRequest extends Controller
         return view('partner.refusedUsers', compact('refusedUsers'));
     }
 
-    
+     
 }
