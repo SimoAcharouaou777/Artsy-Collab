@@ -69,7 +69,19 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     
-        $user->roles()->attach([1]); 
-        return $user;
+        switch($data['role_user']){
+            case 1 : 
+                $user->roles()->attach([1]);
+                return redirect('/home');
+                break;
+            case 2 : 
+                $user->roles()->attach([2]);
+                return redirect('/dashboard');
+                break;
+            case 3 :
+                $user->roles()->attach([3]);
+                return redirect('/partnerdashboard');
+                break;
+        }
     }
 }
