@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Requests\UpdateProfileRequest;
 use App\Models\User;
 
 class ProfileController extends Controller
@@ -52,17 +52,14 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateProfileRequest $request, string $id)
     {
+            // dd($request);
         $user = Auth::user();
-
-        $user->username = $request->input('username');
-        $user->email = $request->input('email');
-        $user->skills = $request->input('skills');
+        $data = $request->all();
+        $user->update($data);
     
-        $user->update();
-    
-        return redirect()->route('profile');
+        return redirect(route('profile.index'));
     }
 
     /**
