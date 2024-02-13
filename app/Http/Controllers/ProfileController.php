@@ -54,9 +54,14 @@ class ProfileController extends Controller
      */
     public function update(UpdateProfileRequest $request, string $id)
     {
-            // dd($request);
+            
         $user = Auth::user();
         $data = $request->all();
+        if (!$request->hasFile('profile_picture')) {
+            unset($data['profile_picture']);
+        }else{
+            $data['profile'] = $request->file('profile_picture')->store('image','public');
+        }
         $user->update($data);
     
         return redirect(route('profile.index'));
