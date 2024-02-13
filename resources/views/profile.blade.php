@@ -30,16 +30,16 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label class="small mb-1" for="inputUsername"></label>
-                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="{{ Auth::user()->username }}">
+                            <label class="small mb-1" for="username"></label>
+                            <input class="form-control" name="username" id="username" type="text" placeholder="Enter your username" value="{{ Auth::user()->username }}">
                         </div>
                         <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="{{ Auth::user()->email }}">
+                            <label class="small mb-1" for="email">Email address</label>
+                            <input class="form-control" name="email" id="email" type="email" placeholder="Enter your email address" value="{{ Auth::user()->email }}">
                         </div>
                         <div class="mb-3">
                             <label class="small mb-1" for="skills">Skills</label>
-                            <input class="form-control" id="skills" type="skills" placeholder="Enter Your Skills ex : artist , voice-over" value="{{Auth::user()->skills}}">
+                            <input class="form-control" name="skills" id="skills" type="skills" placeholder="Enter Your Skills ex : artist , voice-over" value="{{Auth::user()->skills}}">
                         </div>
                         <button class="btn btn-primary" type="submite">Save changes</button>
                     </form>
