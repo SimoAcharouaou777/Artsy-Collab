@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('profile')->nullable();
-            $table->json('skills')->nullable();
+            $table->string('skills')->nullable();
             $table->enum('status',['active', 'notactive', 'banned'])->default('active');
             $table->rememberToken();
             $table->timestamps();
