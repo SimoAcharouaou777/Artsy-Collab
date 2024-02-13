@@ -25,6 +25,7 @@ class UpdateProfileRequest extends FormRequest
             'username' => 'required',
             'email' => 'required|email',
             'skills' => 'nullable|string', 
+            'profile' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ];
     }
 }
