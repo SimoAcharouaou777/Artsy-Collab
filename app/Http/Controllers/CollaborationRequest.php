@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+\Illuminate\Support\Facades\DB::enableQueryLog();
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CollaborationRequest extends Controller
 {
@@ -20,21 +22,46 @@ class CollaborationRequest extends Controller
     }
     public function showdashboard()
     {
-        $user = Auth::user();
-        $pendingUsers = $user->projects()->wherePivot('status', 'pending')->get();
+        $users = User::all();
+        $pendingUsers = collect();
+        
+        foreach ($users as $user) {
+            $pendingProjects = $user->projects()->wherePivot('status', 'pending')->get();
+            
+
+            if ($pendingProjects->count() > 0) {
+                $pendingUsers->push($user);
+            }
+        }
         return view('partner.pendingUsers', compact('pendingUsers'));
     }
-    public function acceptRequest($projectId)
+    public function acceptUserRequest(Request $request, $id)
     {
-        $user = Auth::user();
-        $user->projects()->updateExistingPivot($projectId,['status' => 'accepted']);
-        return redirect(route('partner.dashboard'));
+        $idData = explode('-',$id);
+        $idProject = $idData[0];
+        $idUser = $idData[1];
+        $pendingProjects = User::find($idUser)->projects()->wherePivot('user_id',$idUser)->updateExistingPivot($idProject,[
+            'status' => $request->status,
+        ]);
+    
+        return redirect()->route('partner.dashboard');
+        
     }
+
     public function showAcceptedUsers()
     {
-        $user = Auth::user();
-        $acceptedUsers = $user->projects()->wherePivot('status', 'accepted')->get();
-        return view('partner.acceptedUsers', compact('acceptedUsers'));
+        $users = User::all();
+        $pendingUsers = collect();
+        
+        foreach ($users as $user) {
+            $pendingProjects = $user->projects()->wherePivot('status', 'accepted')->get();
+            
+
+            if ($pendingProjects->count() > 0) {
+                $pendingUsers->push($user);
+            }
+        }
+        return view('partner.acceptedUsers', compact('pendingUsers'));
     }
     public function refuseRequest($projectId)
     {
@@ -44,9 +71,19 @@ class CollaborationRequest extends Controller
     }
     public function showRefusedUsers()
     {
-        $user = Auth::user();
-        $refusedUsers = $user->projects()->wherePivot('status', 'refused')->get();
-        return view('partner.refusedUsers', compact('refusedUsers'));
+        $users = User::all();
+        $pendingUsers = collect();
+        
+        foreach ($users as $user) {
+            $pendingProjects = $user->projects()->wherePivot('status', 'refused')->get();
+            
+
+            if ($pendingProjects->count() > 0) {
+                $pendingUsers->push($user);
+            }
+        }
+        return view('partner.refusedUsers', compact('pendingUsers'));
+        
     }
 
      
