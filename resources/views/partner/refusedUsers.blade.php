@@ -96,19 +96,22 @@
         <tbody id="category">
 
 
-          @foreach($refusedUsers as $collab)
+          @foreach($pendingUsers as $user)
+               @foreach($user->projects as $collab)
             <tr>
-                <td>{{ $collab->title }}</td>
-                <td><img src="{{ asset('storage/' . $collab->image) }}" alt="Project Image" style="max-width: 70px;"></td>
-                <td>the number</td>
-                <td>{{ $collab->users->first()->username }}</td>
-                <td>{{ $collab->users->first()->skills }}</td>
-                <td>{{ $collab->requirements }}</td>
-                <td>{{ $collab->pivot->status }}</td>
-
+              <td>{{ $collab->title }}</td>
+              <td><img src="{{ asset('storage/' . $collab->image) }}" alt="Project Image" style="max-width: 70px;"></td>
+              <td>the number</td>
+              <td>{{ $user->username }}</td>
+              <td>{{ $user->skills }}</td>
+              <td>{{ $collab->requirements }}</td>
+              <td>{{ $collab->pivot->status }}</td>
        
                 <td class="d-flex gap-2">
-                <form action="{{route('acceptUser.Request', $collab->id)}}" method="post">
+                @php
+                  $route = $collab->id."-".$user->id;
+                @endphp
+                <form action="{{route('acceptUser.Request', $route)}}" method="post">
                   @csrf
                   @method('PUT')
                   <button type="submit" class="btn btn-light" name="status" value="accepted">
@@ -118,7 +121,7 @@
                   </button>
               </form>
 
-              <form action="{{route('refuseUser.Request', $collab->id)}}" method="post">
+              <form action="{{route('acceptUser.Request', $route)}}" method="post">
                 @csrf
                 @method('PUT')
                 <button type="submit" class="btn btn-light" name="status" value="refused">
@@ -138,6 +141,7 @@
                 </td>
             </tr>
             @endforeach
+                @endforeach
 
 
                {{-- Edite Modal  --}}
