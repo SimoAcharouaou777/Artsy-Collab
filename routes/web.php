@@ -50,7 +50,7 @@ Route::get('/banned', [BannedController::class,'index'])->name('banned.user');
 Route::get('/details/{id}', [DetailsController::class, 'index'])->name('project.details');
 Route::get('/partnerdashboard',[CollaborationRequest::class,'showdashboard'])->name('partner.dashboard')->middleware(['auth','partner']);
 Route::post('/sendRequest/{id}',[CollaborationRequest::class,'sendRequest'])->name('send.request');
-Route::put('/acceptUserRequest/{id}',[CollaborationRequest::class,'acceptRequest'])->name('acceptUser.Request')->middleware(['auth','partner']);
+Route::put('/acceptUserRequest/{id}', [CollaborationRequest::class,'acceptUserRequest'])->name('acceptUser.Request')->middleware(['auth','partner']);
 Route::put('/refuseUserRequest/{id}',[CollaborationRequest::class,'refuseRequest'])->name('refuseUser.Request')->middleware(['auth','partner']);
 Route::get('/ShowAceeptedUsers',[CollaborationRequest::class,'showAcceptedUsers'])->name('accepted.users')->middleware(['auth','partner']);
 Route::get('/showRefusedUsers',[CollaborationRequest::class,'showRefusedUsers'])->name('refused.Users')->middleware(['auth','partner']);
