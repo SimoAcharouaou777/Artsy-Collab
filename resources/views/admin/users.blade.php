@@ -92,7 +92,7 @@
                 <td>{{$user->username}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->skills}}</td>
-                <td>{{$user->profile}}</td>
+                <td><img src="{{ asset('storage/' . $user->profile) }}" style="width: 50px"></td>
                 <td>{{$user->status}}</td>
                 <td>{{$user->roles->first()->name }}</td>
                 <td>number of  collaborated projects</td>
