@@ -84,12 +84,12 @@
           <tr>
             <th>ID</th>
             <th>Project Name </th>
+            <th>Project Image</th>
             <th>Description</th>
             <th>Requirements</th>
             <th>Project Status</th>
             <th>Partner Name</th>
             <th>Number Of Collaboraters</th>
-            <th>Project Image</th>
             <th>Action</th>
             				
           </tr>
@@ -101,14 +101,14 @@
             <tr>
                 <td>{{$project->id}}</td>
                 <td>{{$project->title}}</td>
+                <td><img src="{{ asset('storage/' . $project->image) }}" alt="project Image" style="max-width: 70px;"></td>
                 <td>{{$project->description}}</td>
                 <td>{{$project->requirements}}</td>
                 <td>{{$project->status}}</td>
                 <td>{{$project->partner->name}}</td>
-                <td>number of coll</td>
-                <td><img src="{{ asset('storage/' . $project->image) }}" alt="project Image" style="max-width: 70px;"></td>
+                <td>{{ $acceptedCounts[$project->id] }}</td>
+                
 
-       
                 <td class="d-flex gap-2">
                 <form action="{{ route('project.updateStatus', $project->id) }}" method="post">
                   @csrf
