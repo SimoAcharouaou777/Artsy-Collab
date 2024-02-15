@@ -13,7 +13,12 @@ class DashboardController extends Controller
     {
         $partners = Partner::all();
         $projects = Project::with('partner')->get();
-        return view('admin.projects',compact('partners','projects'));
+        $acceptedCounts = [];
+
+        foreach ($projects as $project) {
+            $acceptedCounts[$project->id] = $project->users()->wherePivot('status', 'accepted')->count();
+        }
+        return view('admin.projects',compact('partners','projects','acceptedCounts'));
     }
 
 }
