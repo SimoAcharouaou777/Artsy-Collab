@@ -56,11 +56,11 @@ Route::get('/ShowAceeptedUsers',[CollaborationRequest::class,'showAcceptedUsers'
 Route::get('/showRefusedUsers',[CollaborationRequest::class,'showRefusedUsers'])->name('refused.Users')->middleware(['auth','partner']);
 Route::delete('/deleteUser/{id}',[UsersController::class,'deleteUser'])->name('delete.User')->middleware(['auth','admin']);
 Route::put('/updateUserRole/{id}',[UsersController::class,'UpdateUserRole'])->name('update.user.role')->middleware(['auth','admin']);
-
+Route::get('/partnerProfile/{id}',[PartnerController::class,'partnerProfile'])->name('partner.Profile');
 
 
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('profile', ProfileController::class);
-    
+
 });
