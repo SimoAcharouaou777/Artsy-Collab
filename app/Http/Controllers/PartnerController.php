@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Partner;
 use App\Http\Requests\PartnersRequest;
+use App\Models\User;
 
 
 class PartnerController extends Controller
@@ -36,6 +37,13 @@ class PartnerController extends Controller
         $data['image'] = $request->file('image')->store('image','public');
         $partner->update($data);
         return redirect(route('showPartners'));
+    }
+    public function partnerProfile($id)
+    {
+        
+        $user = User::find($id);
+        
+        return view('partner.partnerProfile', compact('user'));
     }
 
   
