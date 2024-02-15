@@ -84,7 +84,6 @@
           <tr>
             <th>Project Name </th>
             <th>Project Image</th>
-            <th>Number of Collaboration</th>
             <th>User Name</th>
             <th>User Skills</th>
             <th>Project Requirements</th>
@@ -101,7 +100,6 @@
        <tr>
          <td>{{ $collab->title }}</td>
          <td><img src="{{ asset('storage/' . $collab->image) }}" alt="Project Image" style="max-width: 70px;"></td>
-         <td>the number</td>
          <td>{{ $user->username }}</td>
          <td>{{ $user->skills }}</td>
          <td>{{ $collab->requirements }}</td>
@@ -131,13 +129,11 @@
            </button>
        </form>
 
-           <form action="" method="post" >
-               @csrf 
-               @method('DELETE')
-               <button type="submit" name="submit"  class="btn btn-light">
-               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/> <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/> </svg>
-               </button>
-           </form>
+       <a href="{{route('partner.Profile', $user->id)}}" class="btn btn-light">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+            <path d="M8 1.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM0 15s2-3 8-3 8 3 8 3H0zm1-1s1.243-2 7-2 6 2 6 2H1z"/>
+        </svg>
+      </a>
            </td>
        </tr>
        @endforeach
