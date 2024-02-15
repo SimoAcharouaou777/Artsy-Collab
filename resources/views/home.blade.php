@@ -265,7 +265,7 @@
     <section id="portfolio" class="portfolio">
       <div class="container" data-aos="fade-up">
           <div class="section-title">
-              <h2>Portfolio</h2>
+              <h2>Projects</h2>
               <p>Here You Can Find The Projects That Fits You As An Artist</p>
           </div>
   
