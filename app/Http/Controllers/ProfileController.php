@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateProfileRequest;
-use App\Models\User;
+use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProfileController extends Controller
 {
@@ -14,6 +15,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        // abort_if(Gate::denies(''), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view('profile');
     }
 
